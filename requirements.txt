@@ -1,2 +1,3 @@
 boto3
-/tmp/buda-python-0.3.0.tar.gz
+https://github.com/bufferapp/buda-protobufs/releases/download/0.3.0/buda-python-0.3.0.tar.gz
+kiner
