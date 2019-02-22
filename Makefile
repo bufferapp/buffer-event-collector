@@ -17,7 +17,7 @@ push:
 
 .PHONY: dev
 dev:
-	docker run -it --env-file .env -p 50051:50051 --rm -v `pwd`:/usr/src/app $(IMAGE_NAME) /bin/bash
+	docker run -it -e ENV=dev --env-file .env -p 50051:50051 --rm -v `pwd`:/usr/src/app $(IMAGE_NAME) /bin/bash
 
 .PHONY: deploy
 deploy: build push

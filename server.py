@@ -6,6 +6,7 @@ import grpc
 import logging
 from kiner.producer import KinesisProducer
 import signal
+import os
 
 from buda.services.events_collector_service_pb2 import Response
 import buda.services.events_collector_service_pb2_grpc as collector_grpc
@@ -50,6 +51,8 @@ class EventsCollectorServicer(collector_grpc.EventsCollectorServicer):
                 .format(name))
 
         data = message.SerializeToString()
+        if os.getenv('ENV', 'prod') == 'dev':
+            logger.info(data)
         self.producers[name].put_record(data)
 
     def CollectFunnelEvent(self, funnel_event, context):
